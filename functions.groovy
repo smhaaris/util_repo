@@ -5,8 +5,8 @@ def uploadArtifact() {
    	
                 "files":[
                     {
-			"pattern":"/var/lib/jenkins/workspace/pipeline3/target/*.jar",
-			"target":"art1/${artifactId}/${version}.${BUILD_NUMBER}/"
+			"pattern":"/var/lib/jenkins/workspace/app_pipeline/target/*.jar",
+			"target":"CRUD-Spring-Boot-JPA-MySQL/${artifactId}/${version}.${BUILD_NUMBER}/"
 			}]
 		}"""
 		server.upload(uploadSpec) 	
@@ -19,8 +19,8 @@ def downloadArtifact() {
 				
 			"files":[
 			{
-			"pattern":"art1/${artifactId}/${version}.${BUILD_NUMBER}/*.jar",
-			"target":"/var/lib/jenkins/workspace/pipeline3/"
+			"pattern":"CRUD-Spring-Boot-JPA-MySQL/${artifactId}/${version}.${BUILD_NUMBER}/*.jar",
+			"target":"/var/lib/jenkins/workspace/CRUD-Spring-Boot-JPA-MySQL/"
 			}
 			]
 			}"""
@@ -46,15 +46,15 @@ def qualityGate() {
     	   }
 
 def sendEmail() {
-	  emailext body: '${DEFAULT_CONTENT}', subject: '${DEFAULT_SUBJECT}', to:  props.RECEPIENT_MAIL_ID
+	  emailext body: '${DEFAULT_CONTENT}', subject: '${DEFAULT_SUBJECT}', to:  props.MAIL_ID
 
 }
 
-def failureEmail(err) {
+def failureEmail(error) {
 	emailext( 
 		subject: '${JOB_NAME} - BUILD # ${BUILD_NUMBER} -  FAILURE', 
-		body: "${err}",
-		to: props.RECEPIENT_MAIL_ID
+		body: "${error}",
+		to: props.MAIL_ID
 		);
 	print 'mail sent'
 }
