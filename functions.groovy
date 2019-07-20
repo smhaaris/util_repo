@@ -5,7 +5,7 @@ def uploadArtifact() {
    	
                 "files":[
                     {
-			"pattern":"/var/lib/jenkins/workspace/app_pipeline/target/*.jar",
+			"pattern":"/var/lib/jenkins/workspace/shared_pipeline/target/*.jar",
 			"target":"CRUD-Spring-Boot-JPA-MySQL/${artifactId}/${version}.${BUILD_NUMBER}/"
 			}]
 		}"""
@@ -20,7 +20,7 @@ def downloadArtifact() {
 			"files":[
 			{
 			"pattern":"CRUD-Spring-Boot-JPA-MySQL/${artifactId}/${version}.${BUILD_NUMBER}/*.jar",
-			"target":"/var/lib/jenkins/workspace/CRUD-Spring-Boot-JPA-MySQL/"
+			"target":"/var/lib/jenkins/workspace/shared_pipeline/"
 			}
 			]
 			}"""
