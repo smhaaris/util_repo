@@ -33,7 +33,7 @@ def function(props) {
 	{
 	  sh props.DOCKER_BUILD
 	  //sh props.DOCKER_TAG
-	  sh docker login docker.io
+	  sh props.DOCKER_LOGIN
 	  sh props.DOCKER_PUSH
 	}	
 	}
