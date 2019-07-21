@@ -33,8 +33,10 @@ def function(props) {
 	{
 	  sh props.DOCKER_BUILD
 	  //sh props.DOCKER_TAG
-	  sh props.DOCKER_LOGIN
-	  sh props.DOCKER_PUSH
-	}	
+	  //sh props.DOCKER_LOGIN
+	  withDockerRegistry(credentialsId: 'b526aa75-19d6-4e3c-bdc6-9a7e202a65f4', url: 'docker.io') {
+    		sh props.DOCKER_PUSH
 	}
+	}	
+}
 return this
