@@ -1,6 +1,6 @@
 def uploadArtifact() {
 	script {
-		def server = Artifactory.server 'artifactory'
+		def server = Artifactory.server 'Artifactory'
                def uploadSpec = """{
    	
                 "files":[
@@ -14,7 +14,7 @@ def uploadArtifact() {
 	}
 def downloadArtifact() {
 	script {
-		def server = Artifactory.server 'artifactory'
+		def server = Artifactory.server 'Artifactory'
 			def downloadSpec = """{
 				
 			"files":[
