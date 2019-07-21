@@ -32,7 +32,7 @@ def function(props) {
 	stage('Build & Push Docker image')
 	{
 	  sh props.DOCKER_BUILD
-	  sh props.DOCKER_TAG		
+	  //sh props.DOCKER_TAG		
 	  sh props.DOCKER_PUSH
 	}	
 	}
