@@ -25,10 +25,10 @@ def function(props) {
 	stage('UploadArtifactory') {
 	functions.uploadArtifact();
 	}
-	stage('downloadingArtifact')
-	{
-	functions.downloadArtifact();	
-	}
+	//stage('downloadingArtifact')
+	//{
+	//functions.downloadArtifact();	
+	//}
 	stage('Build & Push Docker image')
 	{
 	  sh props.DOCKER_BUILD
