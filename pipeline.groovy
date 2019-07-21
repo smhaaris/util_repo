@@ -12,10 +12,10 @@ def function(props) {
 	{
 	functions.sonar();
 	}
-	stage("SonarQube Quality Gate")
-	{
-	functions.qualityGate();
-	}
+	//stage("SonarQube Quality Gate")
+	//{
+	//functions.qualityGate();
+	//}
 	stage('BuildProject') 
 	{
 		withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
