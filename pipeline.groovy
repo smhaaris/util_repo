@@ -18,7 +18,9 @@ def function(props) {
 	}
 	stage('BuildProject') 
 	{
-	sh props.MAVEN_BUILD		
+		withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
+			sh props.MAVEN_BUILD
+		}		
    	}
 	stage('UploadArtifactory') {
 	functions.uploadArtifact();
