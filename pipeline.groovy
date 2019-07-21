@@ -10,22 +10,22 @@ def function(props) {
 	}
 	stage('SonarAnalysis')
 	{
-	commonUtility.sonar();
+	functions.sonar();
 	}
 	stage("SonarQube Quality Gate")
 	{
-	commonUtility.qualityGate();
+	functions.qualityGate();
 	}
 	stage('BuildProject') 
 	{
 	sh props.MAVEN_BUILD		
    	}
 	stage('UploadArtifactory') {
-	commonUtility.uploadArtifact();
+	functions.uploadArtifact();
 	}
 	stage('downloadingArtifact')
 	{
-	commonUtility.downloadArtifact();	
+	functions.downloadArtifact();	
 	}
 	stage('Build & Push Docker image')
 	{
@@ -33,28 +33,5 @@ def function(props) {
 	  sh props.DOCKER_TAG		
 	  sh props.DOCKER_PUSH
 	}	
-	stage('Dev deploy') {
-    	 echo 'Docker Deploy'
-         sh props.DOCKER_CMD
-  	 sh props.DOCKER_RUN
-	}
-	stage('Test deploy') {
-	input "Deploy to Test? "
-	echo 'Docker-compose Deploy'
-         sh props.ANSIBLE_CMD
-  	 sh props.ANSIBLE_RUN
-	}	
-	stage('Prod Deploy') {
-        input "Deploy to Production? "
-    	echo 'Deploy to kubernetes'
-     	sh props.KUBERNETES_APPLY
-     	sh props.KUBERNETES_GET_ALL
-	}
-	
-	
-	stage('Email Notification')
-	{
-		commonUtility.sendEmail();
-	}
 	}
 return this
