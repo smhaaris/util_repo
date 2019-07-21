@@ -32,8 +32,10 @@ sh "mv  ${artifactId}/${version}.${BUILD_NUMBER}/*.jar ."
 
 def sonar(){
 	  withSonarQubeEnv('sonarqube') {
-	  def mvncmd=props.SONAR_SCAN
-	  sh "${mvncmd}"
+		    withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
+			def mvncmd=props.SONAR_SCAN
+	  		sh "${mvncmd}"
+		}
 	   }
 }
 def qualityGate() {
